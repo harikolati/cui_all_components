@@ -1,0 +1,12 @@
+<div class="timeline" [ngClass]="{'timeline--block': block, 'timeline--centered': centered, 'timeline--animation': animated}">
+	<div class="timeline__list">
+		<div class="timeline__item" *ngFor="let item of items">
+			<div class="timeline__icon {{item.colorClass}}"></div>
+			<div class="timeline__time">{{item.formattedTime}}</div>
+			<div class="timeline__content" [innerHtml]="item.content" *ngIf="item.content"></div>
+			<div class="timeline__content" *ngIf="item.template && !item.content">
+				<ng-container *ngTemplateOutlet="item.template; context: {data: item.data}"></ng-container>
+			</div>
+		</div>
+	</div>
+</div>

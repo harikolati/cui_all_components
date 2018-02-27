@@ -1,0 +1,13 @@
+<div class="form-group">
+	<div class="form-group__text">
+		<input type="text" #input [(ngModel)]="inputText" [placeholder]="placeholder" (ngModelChange)="onInputTextChange()">
+		<label [innerHtml]="label"></label>
+		<div class="required-block" *ngIf="required">
+			<span class="icon-asterisk" title="This is a required field"></span>
+		</div>
+		<button cuiButton color="primary" animated="true" small="true" [disabled]="!inputText || chips.length >= max || dupDisable" (click)="onAdd()">
+			<span>Add</span>
+		</button>
+	</div>
+</div>
+<cui-labels [(ngModel)]="chips" (ngModelChange)="onLabelsChange()"></cui-labels>

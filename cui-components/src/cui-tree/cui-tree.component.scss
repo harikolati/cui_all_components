@@ -1,0 +1,44 @@
+.cui-tree-pl {
+	display: inline-block;
+	height: 10px;
+	margin-left: 15px;
+}
+.cui-tree-handle {
+	display: inline;
+	vertical-align: middle;
+	width: 1.5em;
+	height: 1.5em;
+}
+.cui-tree-angle-pl {
+	height: 10px;
+	display: inline-block;
+	border-left: 1px solid #9e9ea2;
+	border-bottom: 1px solid #9e9ea2;
+	margin-bottom: 3px;
+	margin-left: 10px;
+}
+.tree-icon-container i {
+	margin-left: 10px;
+}
+.cui-tree-item-actions {
+	margin-left: 200px;
+}
+
+.cui-tree-icon {
+	position: relative;
+	top: 4px;
+}
+
+.row-center-vertical {
+	display: inline-flex;
+	align-items: center;
+}
+
+.icon-expanded:after {
+	content: url('data:image/svg+xml;charset=utf-8,<svg width="24px" height="24px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch --> <title>Slice 2</title> <desc>Created with Sketch.</desc> <defs></defs> <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="chevron-up-circle" transform="translate(28.000000, 28.000000) rotate(-90.000000) translate(-28.000000, -28.000000) translate(4.000000, 4.000000)" fill="#58585b"> <g id="Layer_1"> <path d="M24,0 C10.7,0 0,10.7 0,24 C0,37.3 10.7,48 24,48 C37.3,48 48,37.3 48,24 C48,10.7 37.3,0 24,0 L24,0 Z M21.4,35.4 C21,35.8 20.5,36 20,36 C19.5,36 19,35.8 18.6,35.4 C17.8,34.6 17.8,33.4 18.6,32.6 L27.2,24 L18.6,15.4 C17.8,14.6 17.8,13.4 18.6,12.6 C19.4,11.8 20.6,11.8 21.4,12.6 L32.8,24 L21.4,35.4 L21.4,35.4 Z" id="Shape"></path> </g> </g> </g> </svg>');
+	@extend .cui-tree-icon;
+} 
+.icon-collapsed:after {
+	content: url('data:image/svg+xml;charset=utf-8,<svg width="24px" height="24px" viewBox="0 0 58 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <title>Slice 2</title> <defs></defs> <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="down-arrow-outline" transform="translate(29.000000, 27.000000) rotate(90.000000) translate(-29.000000, -27.000000) translate(5.000000, 3.000000)" fill="#58585b"> <g id="Layer_1"> <g id="Group"> <path d="M20,12 C19.488,12 18.977,12.195 18.586,12.586 C17.805,13.367 17.805,14.633 18.586,15.414 L27.172,24 L18.586,32.586 C17.805,33.367 17.805,34.633 18.586,35.414 C18.977,35.805 19.488,36 20,36 C20.512,36 21.023,35.805 21.414,35.414 L32.828,24 L21.414,12.586 C21.023,12.195 20.512,12 20,12 L20,12 Z" id="Shape"></path> <path d="M24,0 C10.745,0 0,10.746 0,24 C0,37.255 10.745,48 24,48 C37.255,48 48,37.255 48,24 C48,10.746 37.255,0 24,0 L24,0 Z M24,44 C12.972,44 4,35.027 4,24 C4,12.972 12.972,4 24,4 C35.028,4 44,12.972 44,24 C44,35.027 35.028,44 24,44 L24,44 Z" id="Shape"></path> </g> </g> </g> </g> </svg>'); 
+	@extend .cui-tree-icon;
+}

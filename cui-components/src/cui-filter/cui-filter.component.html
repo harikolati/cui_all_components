@@ -1,0 +1,37 @@
+<div class="filter-groups">
+	<div class="filter-group half-margin-bottom" *ngFor="let group of options.filters" [ngClass]="{ 'base-margin-bottom' : group.isDropdown }">
+		<div class="legend legend--toggle text-capitalize" *ngIf="group.label" (click)="group.toggleOpen()">
+			<span class="qtr-margin-left">{{group.label}}</span>
+			<small class="pull-right">
+				<span *ngIf="!group.open" [ngClass]="{'icon-chevron-down': !options.rightToDown, 'icon-chevron-right': options.rightToDown}"></span>
+				<span *ngIf="group.open" class="icon-chevron-up"></span>
+			</small>
+		</div>
+		<div *ngIf="group.open && !group.isDropdown">
+			<div *ngFor="let item of group.items">
+				<label class="checkbox">
+					<input type="checkbox" (click)="toggleFilter(item, group)" [checked]="item.selected">
+					<span class="checkbox__input"></span>
+					<span class="checkbox__label" [ngClass]="{'text-blue': item.selected}" [title]="item.label">{{item.label}}</span>
+				</label>
+			</div>
+			<p *ngIf="group.hasItemSelected">
+				<a (click)="clearFilters(group)">{{options.clearFiltersLabel}}</a>
+			</p>
+		</div>
+		<div *ngIf="group.open && group.isDropdown">
+			<div *ngIf="group.items; else loader">
+				<cui-select [label]="group.placeholder" [items]="group.items" [(ngModel)]="group.selections" 
+				   (ngModelChange)="onDropdownChanged(group)" optionsKey="label" multiSelect="true"
+				   [paginate]="group.selections?.length > PAGINATE_MIN"></cui-select>
+			   <cui-labels [(ngModel)]="group.selections" (ngModelChange)="onDropdownChanged(group)" labelKey="label"></cui-labels>
+			</div>
+			<ng-template #loader>
+				<cui-loader></cui-loader>
+			</ng-template>
+			<p *ngIf="group.hasItemSelected">
+				<a (click)="clearFilters(group)">{{options.clearFiltersLabel}}</a>
+			</p>
+		</div>
+	</div>
+</div>

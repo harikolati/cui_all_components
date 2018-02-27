@@ -1,0 +1,42 @@
+<div [class]="options?.wrapperClass">
+	<table class="table table--highlight">
+		<thead *ngIf="options?.selectable || options?.showExpandAllBtn">
+			<tr>
+				<th *ngIf="options?.selectable || options?.selectableMix">
+					<label class="checkbox">
+						<input type="checkbox" [(ngModel)]="allSelected" (click)="toggleAllSelected()"/>
+						<span class="checkbox__input"></span>
+					</label>
+				</th>
+				<th>
+					<a attr.data-auto-id="{{options?.dataAutoId + 'toggleExpandAll'}}" *ngIf="options?.showExpandAllBtn && hasChildren" class="link" (click)="toggleExpandAll()">{{!tableExpanded ? 'Expand All' : 'Collapse All'}}</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of rows | treeShowFilter">
+				<td *ngIf="options?.selectable || options?.selectableMix">
+					<label class="checkbox" *ngIf="(!options?.selectableMix || item[options?.selectableKey])" [ngClass]="{ disabled: item[options?.checkboxDisabled] }">
+						<ng-container *ngIf="options?.checkboxDisabled; else checkboxEnabled">
+							<input type="checkbox" [(ngModel)]="item.selected" [disabled]="item[options?.checkboxDisabled]" (ngModelChange)="onItemSelectedChange($event)"/>
+							<span class="checkbox__input"></span>
+						</ng-container>
+						<ng-template #checkboxEnabled>
+							<input type="checkbox" [(ngModel)]="item.selected" (ngModelChange)="onItemSelectedChange($event)"/>
+							<span class="checkbox__input"></span>
+						</ng-template>
+					</label>
+				</td>
+				<td (click)="toggleItemExpanded(item, i)">
+					<span *ngFor="let item of placeholder(item.depth); let i = index; let first = first; let last = last;" [ngClass]="{'cui-tree-pl': true, 'cui-tree-angle-pl': options?.rightAlignChildMarkers ? last : first }" [style.width.px]="options?.placeholderWidth"></span>
+					<span *ngIf="item.isParent" [ngClass]="{ 'icon-expanded': item[options?.expandedKey], 'icon-collapsed': !item[options?.expandedKey] }"></span>
+					<span class="qtr-margin-left" [ngClass]="{ 'row-center-vertical': options.rowElemsVerticallyCentered }" (click)="clickTreeNode(item[options?.idKey])">
+						<ng-container *ngIf="options?.template">
+							<ng-container *ngTemplateOutlet="options?.template; context: { 'item': item }"></ng-container>
+						</ng-container>
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

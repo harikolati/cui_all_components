@@ -1,0 +1,129 @@
+// ====================================================
+// Header
+// ====================================================
+//
+// Markup:
+//     <header class="header">
+//         <div class="header-bar container">
+//             <a class="header-bar__logo">
+//                 <span class="icon-cisco"></span>
+//             </a>
+//             <div class="header-bar__main">
+//                 <div class="header-heading">
+//                     <h1 class="page-title">Marketing Tri-Feature</h1>
+//                 </div>
+//             </div>
+//             <div class="header-toolbar">
+//                 <a class="avatar">John Doe</a>
+//                 <a class="button button--icon">
+//                     <span class="icon-sign-out"></span>
+//                 </a>
+//                 <a class="button button--icon">
+//                     <span class="icon-help"></span>
+//                 </a>
+//             </div>
+//         </div>
+//     </header>
+
+@import '~cisco-ui/src/scss/utilities/_variables.scss';
+
+$mobile-nav-height: 60px;
+$mobile-nav-zindex: 102;
+
+.mobile-nav {
+  border: 0 none;
+  background: $white;
+  margin: 0;
+  padding: ($base-spacing * 0.25) 0;
+  height: $mobile-nav-height;
+  z-index: $mobile-nav-zindex;
+
+  > ul {
+    width: 100%;
+    display: inline-flex;
+
+     > li > a,
+    > li {
+      display: flex;
+      flex: 1 1 auto;
+      text-align: center;
+      flex-direction: column;
+      font-size: $small-font-size;
+      color: $med-gray-2;
+    }
+
+     > li > a:hover,
+     > li.active > a,
+     > li:hover,
+    > li.active {
+      color: $base-accent-color;
+    }
+  }
+
+  span[class^="icon-"] {
+    font-size: $large-icon-font-size;
+  }
+
+  &__menu {
+    z-index: $mobile-nav-zindex;
+    position: absolute;
+    top: 51px;
+    right: 0;
+    min-width: 150px;
+    padding: 0;
+    border-top: 4px solid $base-accent-color;
+    border-bottom: 1px solid $base-border-color;
+    border-left: 1px solid $base-border-color;
+    border-right: none;
+
+    > ul {
+      text-align: left;
+
+      > li {
+        line-height: 2rem;
+        padding-left: $base-spacing * 0.5;
+
+        a {
+          width: 100%;
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+          cursor: pointer;
+          background-color: $base-accent-color;
+
+          a {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &--bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid $base-border-color;
+
+    .mobile-nav__menu {
+      bottom: $mobile-nav-height - 9;
+      top: unset;
+      border-bottom: 4px solid $base-accent-color;
+      border-top: 1px solid $base-border-color;
+    }
+  }
+
+  &-tabs {
+    @extend .mobile-nav;
+    height: 40px;
+
+    &__menu {
+      @extend .mobile-nav__menu;
+      position: fixed;
+      top: 98px;
+    }
+  }
+}

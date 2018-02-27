@@ -1,0 +1,15 @@
+<div class="form-group">
+	<div class="form-group__text">
+		<ng-content select="[cuiInput]" #input></ng-content>
+		<label for="text4" [innerHtml]="label"></label>
+		<div class="required-block" *ngIf="required">
+			<span class="icon-asterisk" title="This is a required field"></span>
+		</div>
+	</div>
+</div>
+<div class="pull-right text-muted" *ngIf="maxlength">
+	<span [innerHtml]="model.length + ' / ' + maxlength"></span>
+</div>
+<div class="help-block" *ngIf="hasError">
+	<ng-content select="[cuiError]"></ng-content>
+</div>

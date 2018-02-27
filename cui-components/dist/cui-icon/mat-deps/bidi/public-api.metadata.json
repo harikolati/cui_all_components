@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{},"exports":[{"from":"./directionality","export":["Directionality","DIR_DOCUMENT","Direction"]},{"from":"./dir","export":["Dir"]},{"from":"./bidi-module"}]}]

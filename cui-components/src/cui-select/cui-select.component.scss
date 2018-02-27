@@ -1,0 +1,267 @@
+// CUI Select Component
+// cui-select
+@import '~cisco-ui/src/scss/utilities/_variables.scss';
+@import '~cisco-ui/src/scss/utilities/_mixins.scss';
+
+div .cui-select {
+    position: relative;
+    display: flex;
+    transition: all 0.2s ease;
+    /* fixes an issue in firefox where hover state would stick (fix also includes order: 0; in input)*/
+    flex-direction: row-reverse;
+
+    &:hover,
+    &:focus {
+      color: $base-accent-color;
+      z-index: 1;
+
+      &:after {
+        color: $base-accent-color;
+      }
+
+      ~ label {
+        color: $base-font-color;
+      }
+    }
+
+    ~ label {
+      color: $base-muted-color;
+    }
+
+    label:first-of-type {
+      order: 0;
+      cursor: pointer;
+      height: 33px;
+      &:hover {
+        color: $base-font-color;
+      }
+    }
+
+    .select-caret {
+      position: absolute;
+      right: $base-spacing * 0.25;
+      top: 7px;
+      color: $base-disabled-color;
+      pointer-events: none;
+      text-align: center;
+      transition: none;
+    }
+
+    &:hover {
+        .select-caret {
+            color: $base-accent-color;
+        }
+    }
+
+    > input:first-of-type {
+        cursor: pointer;
+        order: 0;
+        margin-right: 34px;
+        &.placeholder {
+            color: $med-gray-2;
+            font-style: italic;
+            transition: all 0.2s ease;
+            &:hover {
+                color: $base-font-color;
+                font-style: normal;
+            }
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    &.focused {
+        .select-caret {
+          color: $base-font-color;
+          transition: none;
+          transform: rotate(180deg);
+        }
+
+        &:hover {
+            .select-caret {
+                color: $base-accent-color;
+            }
+        }
+    }
+
+    .required-block {
+        order: -1;
+    }
+}
+
+.cui-select-dropdown {
+    position: absolute;
+    width: 100%;
+    max-height: 198px;
+    background: $white;
+    border-left: 1px solid $light-gray-2;
+    border-right: 1px solid $light-gray-2;
+    border-bottom: 1px solid $light-gray-2;
+    overflow: auto;
+    z-index: 5000;
+
+    @media screen and (max-width: 766px) {
+        top: 33px;
+    }
+
+    @media screen and (min-width: 766px) {
+        top: 36px;
+    }
+
+    .cui-select-group {
+
+        .cui-select-group-header {
+            display: block;
+            padding: $base-spacing * .3;
+            font-weight: $base-font-weight;
+            color: $base-muted-color;
+        }
+
+        .cui-select-dropdown-option {
+            &:last-child {
+                height: $base-button-height;
+                padding-bottom: 0;
+            }
+        }
+
+        &:last-child .cui-select-dropdown-option {
+            &:last-child {
+                height: 49px;
+                padding-bottom: 22px;
+            }
+        }
+
+    }
+
+    .cui-select-dropdown-option {
+        @include text-ellipsis;
+        position: relative;
+        height: $base-button-height;
+        padding-left: $base-spacing * .7;
+        padding-right: $base-spacing * .7;
+        padding-top: 3px;
+        padding-bottom: 2px;
+        cursor: pointer;
+        color: $base-font-color;
+        vertical-align: middle;
+        font-size: $base-font-size;
+
+        &.active,
+        &:hover:not([style*="background-color"]), &.active {
+            background: $base-accent-color;
+            color: $white;
+            font-weight: bold;
+
+            span:first-child {
+                &:before {
+                    box-shadow: inset 0 0 0 2px $white;
+                }
+
+                & + .check {
+                    color: $white;
+                }
+            }
+        }
+        &:first-child {
+            margin-top: 1px;
+        }
+        &:last-child {
+            height: 49px;
+            padding-bottom: 22px;
+        }
+
+        &.selected {
+            span:first-child {
+                &:before {
+                    box-shadow: inset 0 0 0 2px $base-accent-color;
+                }
+
+                & + .check {
+                    display: block;
+                }
+            }
+        }
+
+        &.selected:hover:not([style*="background-color"]),
+        &.selected.active {
+            span:first-child {
+                &:before {
+                    box-shadow: inset 0 0 0 2px $white;
+                }
+            }
+        }
+
+		.check { display: none }
+
+        span:first-child {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            vertical-align: middle;
+
+            &:before {
+                position: absolute;
+                top: 13px;
+                right: 0;
+                bottom: 0;
+                left: 14px;
+                width: 16px;
+                height: 16px;
+                content: '';
+            }
+            &:before {
+                box-shadow: inset 0 0 0 2px $base-muted-color;
+            }
+            & + .check {
+                display: none;
+                position: absolute;
+                top: 13px;
+                right: 0;
+                bottom: 0;
+                left: 14px;
+                width: 16px;
+                height: 16px;
+                color: $base-accent-color;
+                font-weight: bold;
+                line-height: 1;
+                padding: 3px;
+                font-size: 10px;
+            }
+        }
+
+        span:nth-child(3) {
+            position: absolute;
+            left: 42px;
+            top: 11px;
+        }
+    }
+
+    .select-all-row {
+        @extend .cui-select-dropdown-option;
+        padding-left: 0;
+        padding-right: 0;
+		height: 44px;
+        cursor: pointer;
+
+        &:after {
+            height: 1px;
+            background: $light-gray-2;
+            content: "";
+            display: block;
+            margin-top: 12px;
+        }
+    }
+}
+
+// aligns dropdown for compressed cui-select option
+cui-select > .form-group--compressed > {
+    .cui-select-dropdown {
+        top: 28px;
+    }
+
+    .cui-select:after {
+        top: 2px;
+    }
+}

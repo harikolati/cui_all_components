@@ -1,0 +1,86 @@
+<div>
+  <header class="header" [ngClass]="{'header--tall': options.primaryNav}">
+    <div class="header-bar container">
+      <a class="btn btn--small btn--icon toggle-menu" *ngIf="options.menuToggleButton" (click)="onMenuButtonClicked($event)">
+        <span class="icon-list-menu"></span>
+      </a>
+      <a class="header-bar__logo" [href]="options.brandingLink" [title]="options.brandingTitle" *ngIf="options.showBrandingLogo">
+        <span class="icon-cisco" *ngIf="!options.brandingImage"></span>
+        <img *ngIf="options.brandingImage" [alt]="options.brandingTitle" [src]="options.brandingImage" />
+      </a>
+      <div class="header-bar__main">
+        <div class="header-breadcrumbs" *ngIf="options.breadcrumbs">
+          <ul class="breadcrumb">
+            <li *ngFor="let breadcrumb of options.breadcrumbs">
+			  <a [routerLink]="breadcrumb.routerUrl" *ngIf="breadcrumb.routerUrl">{{breadcrumb.label}}</a>
+              <a [href]="breadcrumb.url" *ngIf="breadcrumb.url && !breadcrumb.routerUrl">{{breadcrumb.label}}</a>
+              <span *ngIf="!breadcrumb.url && !breadcrumb.routerUrl">{{breadcrumb.label}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="header-heading">
+			<h1 class="page-title" aria-level="1" [innerHtml]="options.title"></h1>
+          <div class="header-utilities" *ngIf="options.secondaryNav">
+            <span *ngFor="let item of options.secondaryNav">
+              <a class="link" [href]="item.url" (click)="item.onClick()" *ngIf="item.url">
+                <span class="icon-{{item.icon}}"></span>
+              </a>
+
+              <a class="link" (click)="item.onClick()" *ngIf="!item.url">
+                <span class="icon-{{item.icon}}"></span>
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="header-menus" *ngIf="options.primaryNav" [ngClass]="{'hidden-xs': options.mobileNav}">
+          <ul class="nav nav-tabs">
+            <li *ngFor="let item of options.primaryNav" class="tab" [routerLinkActive]="['active']" [ngClass]="{'active': item.active}">
+              <a [href]="item.url" (click)="item.onClick()" *ngIf="item.url">
+                <div class="tab__heading" [title]="item.label">{{item.label}}</div>
+              </a>
+              <a [routerLink]="item.routerUrl" *ngIf="item.routerUrl">
+                <div class="tab__heading" [title]="item.label">{{item.label}}</div>
+              </a>
+              <a (click)="item.onClick()" *ngIf="!item.url  && !item.routerUrl">
+                <div class="tab__heading" [title]="item.label">{{item.label}}</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-toolbar" *ngIf="options.username || options.toolbarButtons">
+          <a class="avatar" *ngIf="options.username">{{options.username}}</a>
+          <button *ngFor="let button of options.toolbarButtons" class="btn btn--small btn--icon {{getToolbarButtonClass(button)}}" (click)="button.onClick()">
+            <span class="icon-{{button.icon}}"></span>
+            <span class="btn__subtext" *ngIf="button.subtext">{{button.subtext}}</span>
+          </button>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-nav-tabs mobile-nav--top visible-xs" *ngIf="options.mobileNav && options.showMobileNav">
+    <ul class="tabs list list--inline qtr-margin-left half-margin-top">
+      <li *ngFor="let item of getMobileTabsForDisplay()" [ngClass]="{'active': item.active}">
+        <a class="link" [href]="item.url" (click)="item.onClick()" *ngIf="item.url">{{item.label}}</a>
+				<a class="link" [routerLink]="item.routerUrl" *ngIf="item.routerUrl">{{item.label}}</a>
+				<a class="link" (click)="item.onClick()" *ngIf="!item.url  && !item.routerUrl">{{item.label}}</a>
+      </li>
+      <li class="no-underline" [ngClass]="{'active': overflowTabIsActive()}" style="position: relative" *ngIf="getMobileTabsForDisplay(true).length">
+        <a (click)="toggleOverflow()">
+          <span>
+            <span>More</span>
+            <span class="text-xsmall icon-chevron-down qtr-margin-left"></span>
+          </span>
+        </a>
+        <div class="panel mobile-nav-tabs__menu" *ngIf="overflowExpanded">
+          <ul class="list">
+            <li *ngFor="let item of getMobileTabsForDisplay(true)">
+              <a class="link" [href]="item.url" (click)="item.onClick()" *ngIf="item.url">{{item.label}}</a>
+							<a class="link" [routerLink]="item.routerUrl" *ngIf="item.routerUrl">{{item.label}}</a>
+							<a class="link" (click)="item.onClick()" *ngIf="!item.url  && !item.routerUrl">{{item.label}}</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

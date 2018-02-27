@@ -1,0 +1,9 @@
+.smart-search input::-ms-clear,
+.smart-search input::-ms-reveal {
+		display: none;
+}
+.smart-search input::-webkit-search-decoration,
+.smart-search input::-webkit-search-cancel-button,
+.smart-search input::-webkit-search-results-button,
+.smart-search input::-webkit-search-results-decoration { display: none; }
+

@@ -1,0 +1,9 @@
+<div class="dropdown dropdown--animated" tabindex="-1" [ngClass]="{'active': active}" (click)="active = !active" (blur)="doBlur($event)">
+	<button class="btn btn--dropdown {{colorClass}} {{sizeClass}}">{{label}}</button>
+	<div class="dropdown__menu">
+			<span *ngFor="let actionGroup of actions; index as i">
+				<div *ngIf="i > 0" class="dropdown__divider"></div>
+				<a *ngFor="let action of actionGroup" (click)="action.onClick()">{{action.label}}</a>
+			</span>
+	</div>
+</div>

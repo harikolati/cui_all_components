@@ -1,0 +1,5 @@
+<div class="alert {{ getColorClass() }} fade-and-slide-top text-left" *ngIf="alert.visible">
+  <div class="alert__icon {{ getIconClass() }}"></div>
+  <div class="alert__message" [innerHtml]="alert.message"></div>
+  <div class="alert__close icon-close" (click)="options.hide()" *ngIf="options.closeButton"></div>
+</div>

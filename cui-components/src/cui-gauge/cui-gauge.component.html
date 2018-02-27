@@ -1,0 +1,17 @@
+<div class="gauge-container">
+  <div class="gauge gauge--{{color}} gauge--{{size}} {{alt ? 'gauge--alt' : ''}}" [attr.data-percentage]="percentage">
+    <div class="gauge__circle">
+      <div class="mask full">
+        <div class="fill" [ngClass]="{'animated': animated}"></div>
+      </div>
+      <div class="mask half">
+        <div class="fill" [ngClass]="{'animated': animated}"></div>
+        <div class="fill fix" [ngClass]="{'animated': animated}"></div>
+      </div>
+    </div>
+    <div class="gauge__inset">
+      <div class="gauge__percentage">{{value || percentage}}</div>
+    </div>
+  </div>
+  <div class="gauge__label" *ngIf="label">{{label}}</div>
+</div>

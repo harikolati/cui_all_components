@@ -1,0 +1,17 @@
+<div class="cui-toasts">
+  <div *ngFor="let toast of toasts; let i = index" class="cui-toast toast toast--{{toast.padding}}" [ngClass]="{'show': toast.popped}">
+      <div class="toast__icon text--{{toast.severity}}"
+				[ngClass]="{
+					'icon-error': toast.severity === 'danger',
+					'icon-warning': toast.severity === 'warning',
+					'icon-check': toast.severity === 'success',
+					'icon-info': toast.severity === 'info'
+				}">
+			</div>
+      <div class="toast__body">
+          <div class="toast__title" [innerHTML]="toast.title"></div>
+          <div class="toast__message" [innerHTML]="toast.message"></div>
+      </div>
+      <span class="close-button link icon-close" (click)="removeToast(toast)"></span>
+  </div>
+</div>

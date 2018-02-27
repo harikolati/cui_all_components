@@ -1,0 +1,40 @@
+<div 
+  cui-billboard-panel="true" 
+  class="row"
+  [ngClass]="{'flex-row-reverse': flipped}">
+  <!--- Billboard -->
+  <div class="col-12 col-sm-3" *ngIf="showBillboard">
+    <div 
+    [ngClass]="billboardClass" 
+    class="base-margin-bottom">
+    <div class="row no-gutters">
+      <div class="col-6 col-sm-12">
+        <!--- Panel -->
+        <div 
+          class="panel text-billboard text-right" 
+          [ngClass]="panelClass"
+          [innerHTML]="count"></div>
+        </div>
+        <!--- Panel Subtitle -->
+        <div class="
+          col-6
+          col-sm-12
+          text-billboard-subtitle
+          qtr-margin-top
+          text-center
+          text-left-xs
+          half-padding
+          justify-content-start
+          justify-content-sm-center
+          flex-center-vertical">
+          <a *ngIf="linkTo" [href]="linkTo" [innerHTML]="title"></a>
+          <span *ngIf="!linkTo" [innerHTML]="title"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--- Content -->
+  <div class="col-12 col-sm-9">
+    <ng-content></ng-content>
+  </div>
+</div>

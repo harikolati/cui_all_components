@@ -1,0 +1,27 @@
+<div class="cui-pager">
+	<div class="flex-center-vertical">
+		<span class="base-margin-right">
+			<span class="text-muted">{{pageDetails}}</span>
+		</span>
+		<span>
+			<a class="link" [attr.disabled]="page === 0 ? true : null" (click)="gotoPage(0)">
+				<span class="icon-step-backward"></span>
+			</a>
+		</span>
+		<span>
+			<a class="link" [attr.disabled]="page === 0 ? true : null" (click)="gotoPage(page - 1)">
+				<span class="icon-step-prev"></span>
+			</a>
+		</span>
+		<span>
+			<a class="link" [attr.disabled]="page === lastPage ? true : null" (click)="gotoPage(page + 1)">
+				<span class="icon-step-next"></span>
+			</a>
+		</span>
+		<span>
+			<a class="link" [attr.disabled]="page === lastPage ? true : null" (click)="gotoPage(lastPage)">
+				<span class="icon-step-forward"></span>
+			</a>
+		</span>
+	</div>
+</div>

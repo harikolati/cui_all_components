@@ -1,0 +1,33 @@
+.cui-toasts {
+    position: fixed !important;
+    right: .5rem;
+    bottom: .5rem;
+    width: 300px;
+	z-index: 2000;
+}
+
+.cui-toast {
+    position: relative;
+    opacity: 0;
+    transition: opacity 500ms linear;
+}
+
+.cui-toast.show {
+	display: flex !important;
+    opacity: 1;
+    transition: opacity 500ms linear;
+}
+
+.cui-toast .close-button {
+    position: absolute;
+    top: .25rem;
+    right: .375rem;
+}
+
+.toast__body {
+	word-break: break-word;
+}
+
+.toast__icon {
+    float: left;
+}

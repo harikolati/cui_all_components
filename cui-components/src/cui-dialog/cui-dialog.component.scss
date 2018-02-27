@@ -1,0 +1,42 @@
+@import '~cisco-ui/src/scss/utilities/_variables.scss';
+@import '~cisco-ui/src/scss/vendor/bootstrap/_variables.scss';
+@import '~cisco-ui/src/scss/vendor/bootstrap/mixins/_breakpoints.scss';
+@import '~cisco-ui/src/scss/components/_modals.scss';
+
+span[cui-dialog-close].icon-close {
+    font-size: $base-modal-close-size;
+    line-height: $base-modal-close-size;
+    position: absolute;
+    right: $base-spacing;
+    top: $base-spacing;
+    color: $base-muted-color;
+    cursor: pointer; 
+    &:hover {
+        color: $base-link-color;
+    }
+}
+
+/**
+ * Overrides for @angular/cdk/overlay classes
+ */
+.cdk-overlay-backdrop {
+	@extend .modal-backdrop;
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	pointer-events: auto;
+	opacity: 0;
+
+	&.cdk-overlay-backdrop-showing {
+		opacity: $base-backdrop-opacity
+	}
+}
+
+.cdk-overlay-pane {
+    position: absolute;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: $base-modal-zindex;
+}

@@ -1,0 +1,38 @@
+<nav class="sidebar" [ngClass]="{'sidebar--visible': visible}">
+  <div class="sidebar__header" *ngIf="options.title || options.toolbarButtons">
+    <div class="sidebar__header-title" *ngIf="options.title">{{options.title}}</div>
+    <div class="sidebar__header-toolbar" *ngIf="options.toolbarButtons">
+      <button class="btn btn--icon btn--primary" *ngFor="let button of options.toolbarButtons" (click)="button.onClick(button)">
+        <span class="{{button.icon}}"></span>
+      </button>
+    </div>
+  </div>
+  <ul *ngIf="options.items">
+    <li *ngFor="let item of options.items" [ngClass]="{'sidebar__item': item.url || item.onClick, 'sidebar__drawer': item.subItems, 'sidebar__drawer--opened': item.subItems && item.open, 'sidebar__item--selected': item.active, 'disabled': item.disabled}" (click)="toggleDrawer(item)">
+      <a *ngIf="item.url" [href]="item.url">
+        <span *ngIf="item.icon" class="{{item.icon}} qtr-margin-right"></span>
+        <span>{{item.title}}</span>
+      </a>
+      <a *ngIf="item.onClick" (click)="item.onClick(item)">
+        <span *ngIf="item.icon" class="{{item.icon}} qtr-margin-right"></span>
+        <span>{{item.title}}</span>
+      </a>
+      <a *ngIf="item.subItems">
+        <span *ngIf="item.icon" class="{{item.icon}} qtr-margin-right"></span>
+        <span>{{item.title}}</span>
+      </a>
+      <ul *ngIf="item.subItems">
+        <li class="sidebar__item" *ngFor="let subItem of item.subItems" [ngClass]="{'sidebar__item--selected': subItem.active, 'disabled': subItem.disabled}">
+          <a *ngIf="subItem.url" [href]="subItem.url">
+            <span *ngIf="subItem.icon" class="{{subItem.icon}} qtr-margin-right"></span>
+            <span>{{subItem.title}}</span>
+          </a>
+          <a *ngIf="subItem.onClick" (click)="subItem.onClick(subItem)">
+            <span *ngIf="subItem.icon" class="{{subItem.icon}} qtr-margin-right"></span>
+            <span>{{subItem.title}}</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

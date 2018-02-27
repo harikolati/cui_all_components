@@ -1,0 +1,12 @@
+image: alitari/nodejs-chromium
+
+stages:
+  - test
+
+before_script:
+  - npm install
+
+karma:
+  stage: test
+  script:
+    - npm test

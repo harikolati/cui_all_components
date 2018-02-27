@@ -1,0 +1,93 @@
+{
+  "name": "@cisco-ngx/cui-components",
+  "version": "5.4.15",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": {
+    "name": "Blake Callens",
+    "email": "blcallen@cisco.com"
+  },
+  "contributors": [
+    "mischmi2@cisco.com"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://wwwin-gitlab-sjc.cisco.com/cisco-ui-ngx/cui-components"
+  },
+  "publishConfig": {
+    "registry": "http://swtg-npm.cisco.com",
+    "access": "restricted"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 5.0.0"
+  },
+  "scripts": {
+    "ng": "./node_modules/.bin/ng",
+    "build": "node ./tools/build.js",
+    "start": "ng serve --app=demo",
+    "test": "ng test --singleRun  --code-coverage",
+    "angular-link": "npm link @angular/animations @angular/cli @angular/common @angular/compiler @angular/compiler-cli @angular/core @angular/forms @angular/http @angular/language-service @angular/platform-browser @angular/platform-browser-dynamic @angular/router zone.js rxjs core-js typescript"
+  },
+  "dependencies": {
+    "@cisco-ngx/cui-pipes": "git+https://wwwin-gitlab-sjc.cisco.com/cisco-ui-ngx/cui-pipes.git#a5",
+    "@cisco-ngx/cui-services": "git+https://wwwin-gitlab-sjc.cisco.com/cisco-ui-ngx/cui-services.git#a5",
+    "@cisco-ngx/cui-utils": "git+https://wwwin-gitlab-sjc.cisco.com/cisco-ui-ngx/cui-utils.git#a5",
+    "cisco-ui": "git+https://wwwin-gitlab-sjc.cisco.com/cisco-ui/pattern-library.git#1.2.0",
+    "lodash-es": "^4.17.4",
+    "ng-file-drop": "^4.0.0",
+    "tslerp2": "^2.0.0",
+    "tslint-config-apollo": "git+https://wwwin-gitlab-sjc.cisco.com/swtg-apollo-npm/apollo-tslint.git"
+  },
+  "peerDependencies": {
+    "@angular/animations": "^5.0.0",
+    "@angular/cdk": "^5.0.1",
+    "@angular/common": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/forms": "^5.0.0",
+    "@angular/platform-browser": "^5.0.0",
+    "@angular/router": "^5.0.0"
+  },
+  "devDependencies": {
+    "@angular/animations": "^5.0.0",
+    "@angular/cdk": "^5.0.1",
+    "@angular/cli": "^1.6.0",
+    "@angular/common": "^5.0.0",
+    "@angular/compiler": "^5.0.0",
+    "@angular/compiler-cli": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/forms": "^5.0.0",
+    "@angular/platform-browser": "^5.0.0",
+    "@angular/platform-browser-dynamic": "^5.0.0",
+    "@angular/router": "^5.0.0",
+    "@types/jasmine": "~2.5.53",
+    "@types/jasminewd2": "~2.0.2",
+    "@types/lodash-es": "^4.17.0",
+    "@types/node": "~6.0.60",
+    "apollo-arcanist-extensions": "git+https://wwwin-gitlab-sjc.cisco.com/swtg-apollo-npm/apollo-arcanist-extensions.git",
+    "core-js": "^2.4.1",
+    "glob": "^7.1.2",
+    "jasmine-core": "~2.6.2",
+    "jasmine-spec-reporter": "~4.1.0",
+    "karma": "^1.7.1",
+    "karma-argo-reporter": "0.0.1",
+    "karma-chrome-launcher": "~2.1.1",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-junit-reporter": "^1.2.0",
+    "ncp": "^2.0.0",
+    "node-sass": "^4.6.1",
+    "node-sass-tilde-importer": "^1.0.0",
+    "rimraf": "^2.6.2",
+    "rxjs": "^5.5.2",
+    "ts-node": "~3.2.0",
+    "tslint": "^5.8.0",
+    "typescript": "~2.4.2",
+    "util": "^0.10.3",
+    "yargs": "^10.0.3",
+    "zone.js": "^0.8.14"
+  }
+}

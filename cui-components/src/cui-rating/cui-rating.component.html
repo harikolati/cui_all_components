@@ -1,0 +1,17 @@
+<div class="rating__stars">
+  <div class="rating__star" (click)="setRating(5)" [ngClass]="{'active': rating >= 5}">
+    <span class="icon-star"></span>
+  </div>
+  <div class="rating__star" (click)="setRating(4)" [ngClass]="{'active': rating >= 4}">
+    <span class="icon-star"></span>
+  </div>
+  <div class="rating__star" (click)="setRating(3)"[ngClass]="{'active': rating >= 3}">
+    <span class="icon-star"></span>
+  </div>
+  <div class="rating__star" (click)="setRating(2)" [ngClass]="{'active': rating >= 2}">
+    <span class="icon-star"></span>
+  </div>
+  <div class="rating__star" (click)="setRating(1)" [ngClass]="{'active': rating >= 1}">
+    <span class="icon-star"></span>
+  </div>
+</div>

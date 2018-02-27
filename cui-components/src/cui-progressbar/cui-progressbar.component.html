@@ -1,0 +1,10 @@
+<div class="progressbar" [ngClass]="{'progressbar--thin': thin}">
+  <div class="progressbar__header-msg" [innerHTML]="title"></div>
+  <div class="progressbar__bar label--ltgray">
+    <div class="progressbar__bar-solid"></div>
+    <div class="progressbar__bar-mask" [ngStyle]="{'left' : percentage + '%'}"></div>
+  </div>
+  <div *ngIf="subtitle"
+       class="progressbar__percent-complete-msg">{{(percentage/100 | percent:'1.0-0') + ' Complete'}}
+  </div>
+</div>

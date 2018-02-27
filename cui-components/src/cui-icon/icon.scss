@@ -1,0 +1,27 @@
+@import '~cisco-ui/src/scss/utilities/_variables.scss';
+.cui-icon {
+	background-repeat: no-repeat;
+	display: inline-block;
+	fill: $base-font-color;
+	margin: $base-spacing * .25;
+	height: 16px;
+	width: 16px;
+	&.medium {
+		width: 3rem;
+		height: 3rem;
+	}
+	&.large {
+		width: 5rem;
+		height: 5rem;
+	}
+	path { fill: $base-font-color }
+	&.primary, &.primary path           { fill: $primary !important; }
+	&.secondary, &.secondary path       { fill: $secondary !important; }
+	&.default, &.default path   		{ fill: $base-font-color !important; }
+	&.cta, &.cta path          		    { fill: $cisco-green !important; }
+	&.info, &.info path                 { fill: $info !important; }
+	&.success, &.success path           { fill: $success !important; }
+	&.danger, &.danger path             { fill: $danger !important; }
+	&.warning, &.warning path           { fill: $warning !important; }
+	&.warning-alt, &.warning-alt path   { fill: $warning-alt !important; }
+}

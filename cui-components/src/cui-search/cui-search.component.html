@@ -1,0 +1,11 @@
+<div class="form-group">
+	<div class="form-group__text smart-search">
+		<button class="link" *ngIf="searchText.length" (click)="clearSearchText()">
+			<span class="icon-close"></span>
+		</button>
+		<input id="search{{guid}}" type="search" [placeholder]="placeholder" [ngModel]="searchText" (ngModelChange)="onSearchTextChange($event)">
+		<label for="search{{guid}}">
+			<span class="icon-search"></span>
+		</label>
+	</div>
+</div>

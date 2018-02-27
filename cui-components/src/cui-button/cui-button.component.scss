@@ -1,0 +1,38 @@
+@import '~cisco-ui/src/scss/utilities/_variables.scss';
+:host ::ng-deep {
+	.ripple {
+		position: absolute;
+		background: $light-gray-2;
+		border-radius: 50%;
+		width: 5px;
+		height: 5px;
+		animation: rippleEffect 1.5s;
+		opacity: .4;
+	}
+
+	.cui-icon path {
+		fill: $white;
+	}
+}
+
+:host.btn--secondary ::ng-deep,
+:host.btn--gray-ghost ::ng-deep,
+:host.btn--white ::ng-deep {
+	.cui-icon path {
+		fill: $base-font-color;
+	}
+}
+
+:host.btn--gray-ghost:hover ::ng-deep .cui-icon path { fill: $white; }
+:host.btn--primary-ghost ::ng-deep .cui-icon path { fill: $secondary; }
+:host.btn--primary-ghost:hover ::ng-deep .cui-icon path { fill: $white; }
+
+@keyframes rippleEffect {
+	0% {transform: scale(1); opacity: 0.4;}
+	100% {transform: scale(150); opacity: 0;}
+}
+
+button[cuiButton]:host {
+	position: relative;
+	overflow: hidden;
+}

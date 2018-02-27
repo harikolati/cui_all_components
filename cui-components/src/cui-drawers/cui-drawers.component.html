@@ -1,0 +1,17 @@
+<div class="panel-group panel-group--compressed">
+  <div class="panel {{colorClass}}" [ngClass]="{'toggle': allowExpandAll}" (click)="toggleAllExpanded()" *ngIf="label || allowExpandAll">
+    <h6>
+      <span *ngIf="label" [innerHTML]="label"></span>
+      <span [ngClass]="{'pull-left half-margin-right': caretLeft, 'pull-right': !caretLeft}" *ngIf="allowExpandAll">
+        <span *ngIf="rightToDown" [ngClass]="{'icon-chevron-right': !expanded, 'icon-chevron-up': expanded}"></span>
+        <span *ngIf="!rightToDown" [ngClass]="{'icon-chevron-down': !expanded, 'icon-chevron-up': expanded}"></span>
+      </span>
+    </h6>
+  </div>
+	<div *ngIf="projection">
+		<ng-content></ng-content>
+	</div>
+	<div *ngIf="!projection">
+		<cui-drawer [projection]="projection" *ngFor="let drawer of drawers" [label]="drawer.label" [content]="drawer.content" [expanded]="drawer.expanded" [rightToDown]="rightToDown" [caretLeft]="caretLeft"></cui-drawer>
+	</div>
+</div>

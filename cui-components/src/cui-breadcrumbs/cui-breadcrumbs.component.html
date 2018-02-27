@@ -1,0 +1,8 @@
+<ul class="breadcrumb">
+	<li *ngFor="let item of items">
+		<a *ngIf="item.href" [href]="item.href">{{item.label}}</a>
+		<a *ngIf="item.routerUrl && !item.href" [routerLink]="item.routerUrl">{{item.label}}</a>
+		<a *ngIf="item.onClick && !item.href && !item.routerUrl" (click)="item.onClick()">{{item.label}}</a>
+		<span *ngIf="!item.onClick && !item.href && !item.routerUrl">{{item.label}}</span>
+	</li>
+</ul>

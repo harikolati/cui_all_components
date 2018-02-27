@@ -1,0 +1,14 @@
+<div class="input-group">
+    <div class="input-group__prefix">
+        <a (click)="toggleSortDir();" class="link" data-auto-id="sort-anchor">
+            <span [class.icon-sort-amount-asc]="sortDirection === 'asc'" [class.icon-sort-amount-desc]="sortDirection === 'desc'"></span>
+        </a>
+    </div>
+    <div class="input-group__select">
+        <div class="select select--inline">
+            <select (change)="optionChange.emit({sortDirection:sortDirection,sortValue:optionSelected})" attr.data-auto-id="sort-select-{{sortbyID}}" id="sortby-{{sortbyID}}" [(ngModel)]="optionSelected"  name="sortby">
+				<option *ngFor="let option of options" [value]="optionsValue ? option[optionsValue] : option">{{optionsLabel ? option[optionsLabel] : option}}</option>
+            </select>
+        </div>
+    </div>
+</div>

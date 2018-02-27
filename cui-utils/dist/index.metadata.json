@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{},"exports":[{"from":"./utils/guid","export":["Guid"]},{"from":"./utils/i18n","export":["I18nDictionaryItem","I18n"]},{"from":"./utils/language","export":["Language"]},{"from":"./utils/mobile","export":["Mobile"]}]}]

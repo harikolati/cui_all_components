@@ -1,0 +1,18 @@
+<div class="panel {{ panelClass }}">
+		<div class="panel__header flex-center-vertical toggle" (click)="toggleExpanded()">
+				<div class="flex-fluid text-ellipsis">
+					<ng-content *ngIf="projection" select=".cui-drawer-label"></ng-content>
+					<span id="label" *ngIf="label && !projection" [innerHTML]="label"></span>
+				</div>
+				<span *ngIf="allowExpand" [ngClass]="{'pull-left half-margin-right': caretLeft, 'pull-right': !caretLeft}">
+		      <span *ngIf="rightToDown" [ngClass]="{'icon-chevron-right': !expanded, 'icon-chevron-up': expanded}"></span>
+		      <span *ngIf="!rightToDown" [ngClass]="{'icon-chevron-down': !expanded, 'icon-chevron-up': expanded}"></span>
+		    </span>
+		</div>
+		<div class="half-margin-top" *ngIf="expanded">
+				<div class="panel__body" *ngIf="projection">
+					<ng-content  select=".cui-drawer-content"></ng-content>
+				</div>
+				<div *ngIf="!projection" [innerHTML]="content"></div>
+		</div>
+</div>

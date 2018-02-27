@@ -1,0 +1,67 @@
+<div>
+
+	<input *ngIf="multipleAllowed"
+		type="file"
+		style="display: none"
+		(change)="onChange($event)"
+		accept="{{ allowExtensions.join(',') }}"
+		multiple
+		#fileInput />
+	<input *ngIf="!multipleAllowed"
+		type="file"
+		style="display: none"
+		(change)="onChange($event)"
+		accept="{{ allowExtensions.join(',') }}"
+		#fileInput />
+
+	<div ng2FileDrop class="file-drop"
+		(click)="openFileDialog()"
+		[ng2FileDropDisableStyles]="true"
+		[ng2FileDropAcceptMultiple]="multipleAllowed"
+		[ng2FileDropMaximumSizeBytes]="maxSize"
+		[ng2FileDropSupportedFileTypes]="allowTypes"
+		(ng2FileDropFileAccepted)="dragFileAccepted($event)"
+		(ng2FileDropFilesDropped)="dragFiles($event)"
+		(ng2FileDropFileRejected)="dragFileRejected($event)">
+
+		<div *ngIf="!files || !files.length">
+			<span class="file-drop__icon icon-upload"></span>
+			<h4 class="text-muted" [innerHTML]="dropText"></h4>
+		</div>
+
+		<div *ngIf="files && files.length">
+			<div class="file-drop__container container--fluid">
+				<div class="row">
+					<div class="file-drop__card" *ngFor="let file of files; let i = index"
+						[ngClass]="{ 'flex-fill': !multipleAllowed, 'col-lg-3 col-md-6 col-sm-6': multipleAllowed }">
+
+						<div class="panel panel--ltgray panel--skinny" [title]="file.name">
+							<span *ngIf="multipleAllowed"
+								class="icon-close pull-right"
+								(click)="removeFile($event, i)">
+							</span>
+							<span *ngIf="!file.error"
+								class="file-icon text-muted"
+								[ngClass]="getIconForFile(file.name)">
+							</span>
+							<span *ngIf="file.error"
+								class="icon-error file-icon text-danger"
+								[title]="'_InvalidFile_' | i18n">
+							</span>
+							<div class="text-ellipsis" [innerHTML]="file.name"></div>
+							<small [innerHTML]="file.size | fileSize"></small>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div *ngIf="multipleAllowed"
+				class="file-drop__filecnt"
+				innerHTML="{{ files.length }} {{ '_Selected_' | i18n }} ({{ '_Total_' | i18n }}: {{ totalSize | fileSize }})">
+			</div>
+		</div>
+
+	</div>
+
+	<cui-alert [(options)]="alert"></cui-alert>
+</div>

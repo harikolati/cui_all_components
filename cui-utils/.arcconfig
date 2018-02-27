@@ -1,0 +1,8 @@
+{
+    "phabricator.uri": "http://phabricator-swtg.cisco.com",
+    "load": [
+        "./node_modules/apollo-arcanist-extensions/karma"
+    ],
+    "unit.engine": "ArcanistKarmaEngine",
+    "unit.engine.tap.command": "ng test --singleRun  --code-coverage --reporter=spec"
+}

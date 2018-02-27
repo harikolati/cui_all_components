@@ -1,0 +1,6 @@
+<div *ngIf="data?.length">
+	<span class="label" *ngFor="let l of data; let i = index" [ngClass]="labelClasses" [class]="labelClass">
+		<span [innerHtml]="labelKey ? l[labelKey] : l"></span>
+		<span *ngIf="removable" class="icon-close" (click)="remove(i)"></span>
+	</span>
+</div>

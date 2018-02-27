@@ -1,0 +1,33 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "",
+    "outDir": "../../out-tsc/",
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "removeComments": false,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "stripInternal": true,
+    "skipLibCheck": true,
+    "pretty": true,
+    "types": [],
+	"lib": [ "es2016", "dom" ]
+  },
+  "files": [
+    "./index.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "../../out-tsc/",
+    "debug": false,
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  }
+}

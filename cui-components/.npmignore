@@ -1,0 +1,9 @@
+node_modules
+src
+test-data
+coverage
+.angular-cli.json
+.gitlab-ci.yml
+karma.conf.json
+tsconfig.json
+tsling.json
