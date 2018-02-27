@@ -1,0 +1,19 @@
+<div class="content-wrapper" *ngIf="i18nReady">
+	<cui-header [options]="headerOptions"></cui-header>
+	<div class="content content-background--alt">
+		<div class="flex-fill half-margin-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<cui-alert [options]="alert"></cui-alert>
+						<button type="button" class="btn btn--small btn--primary" (click)="showAlert()">{{i18n.get('_ShowAlert_')}}</button>
+						<button type="button" class="btn btn--small btn--secondary" (click)="popToast()">{{i18n.get('_PopToast_')}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<cui-footer></cui-footer>
+</div>
+<cui-toast></cui-toast>
+<cui-spinner class="absolute-center" *ngIf="!i18nReady"></cui-spinner>

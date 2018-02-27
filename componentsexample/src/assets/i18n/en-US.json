@@ -1,0 +1,9 @@
+[
+	{"key": "_Title_", "value": "CUI Components Example"},
+	{"key": "_AlertText_", "value": "This is an alert"},
+	{"key": "_Home_", "value": "Home"},
+	{"key": "_PopToast_", "value": "Pop a Toast"},
+	{"key": "_ShowAlert_", "value": "Show an Alert"},
+	{"key": "_ToastTitle_", "value": "A toast was popped"},
+	{"key": "_ToastMessage_", "value": "This is the toast message"}
+]
